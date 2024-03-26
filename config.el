@@ -5,3 +5,8 @@
 (setq org-directory "~/Documents/")
 (add-to-list 'default-frame-alist '(alpha . 90))
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
+(use-package wakatime-mode
+  :ensure t)
+
+(global-wakatime-mode)
