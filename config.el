@@ -5,7 +5,9 @@
 (setq org-directory "~/Documents/")
 (add-to-list 'default-frame-alist '(alpha . 90))
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
-
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
 (use-package wakatime-mode
   :ensure t)
 
