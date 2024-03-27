@@ -25,8 +25,31 @@
 ;; Org mode
 (setq org-directory "~/Documents/")
 
+;; Time management
+
 ;; Wakatime
 (use-package wakatime-mode
   :ensure t)
-
 (global-wakatime-mode)
+
+;; Odoo
+(defun pointage ()
+  (interactive)
+  (shell-command "~/pointage"))
+(global-set-key (kbd "M-x") 'pointage)
+(defun pointage-entree ()
+  (interactive)
+  (shell-command "~/pointage entree"))
+(global-set-key (kbd "M-x") 'pointage-entree)
+(defun pointage-sortie ()
+  (interactive)
+  (shell-command "~/pointage sortie"))
+(global-set-key (kbd "M-x") 'pointage-sortie)
+(defun pointage-last ()
+  (interactive)
+  (shell-command "~/pointage last"))
+(global-set-key (kbd "M-x") 'pointage-last)
+(defun pointage-time ()
+  (interactive)
+  (shell-command "~/pointage time"))
+(global-set-key (kbd "M-x") 'pointage-time)
