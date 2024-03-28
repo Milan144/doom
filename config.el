@@ -1,6 +1,6 @@
 ;; Theme and font
 (setq doom-theme 'doom-one
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
 
 ;; Line numbers
 ;; Disabling line number increase performances by a lot
@@ -9,7 +9,8 @@
 ;; Window
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (add-to-list 'default-frame-alist '(alpha . 90)) ;; Transparency
-(add-hook 'window-setup-hook 'toggle-frame-maximized t) ;; Maximized on startup
+(add-hook 'window-setup-hook 'toggle-frame-fullscreen t) ;; Fullscreen on startup
+;;(add-hook 'window-setup-hook 'toggle-frame-maximized t) ;; Maximized on startup
 
 ;; Indentation (Tabs with 4 spaces lenght)
 (setq-default indent-tabs-mode nil)
