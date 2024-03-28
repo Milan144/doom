@@ -9,8 +9,7 @@
 ;; Window
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (add-to-list 'default-frame-alist '(alpha . 90)) ;; Transparency
-(add-hook 'window-setup-hook 'toggle-frame-fullscreen t) ;; Fullscreen on startup
-;;(add-hook 'window-setup-hook 'toggle-frame-maximized t) ;; Maximized on startup
+(add-hook 'window-setup-hook 'toggle-frame-maximized t) ;; Maximized on startup
 
 ;; Indentation (Tabs with 4 spaces lenght)
 (setq-default indent-tabs-mode nil)
