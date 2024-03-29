@@ -1,6 +1,6 @@
 ;; Theme and font
-(setq doom-theme 'doom-one
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
+(setq doom-theme 'doom-dracula
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
 ;; Line numbers
 ;; Disabling line number increase performances by a lot
