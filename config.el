@@ -55,7 +55,7 @@
 (global-set-key (kbd "M-x") 'pointage-time)
 
 ;; Sync org notes
-(defun git-sync ()
-  "Run git-sync script."
+(defun sync-notes ()
   (interactive)
   (shell-command "~/Documents/Org/git-sync.sh"))
+(global-set-key (kbd "M-x") 'sync-notes)
