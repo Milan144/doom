@@ -1,4 +1,4 @@
-;; Theme and font
+;;; UI
 (setq doom-theme 'doom-dracula
       doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
@@ -6,28 +6,29 @@
 ;; Disabling line number increase performances by a lot
 (setq display-line-numbers-type nil)
 
-;; Window
+;; Prevents some cases of Emacs flickering.
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-
-(add-to-list 'default-frame-alist '(alpha . 100)) ;; Transparency
-
 
 ;; Indentation (Tabs with 4 spaces lenght)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
 
+;;; :ui modeline
+;; An evil mode indicator is redundant with cursor shape
+(setq doom-modeline-modal nil)
+
+;;; :editor evil
+;; Focus new window after splitting
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
+
 ;;; :ui doom-dashboard
 (setq fancy-splash-image (file-name-concat doom-user-dir "splash.png"))
-
 ;; Hide the menu for as minimalistic a startup screen as possible.
 (setq +doom-dashboard-functions '(doom-dashboard-widget-banner))
 
-;; Org mode
-(setq org-directory "~/Documents/")
-
 ;; Time management
-
 ;; Wakatime
 (use-package wakatime-mode
   :ensure t)
@@ -54,6 +55,9 @@
   (interactive)
   (shell-command "~/pointage time"))
 (global-set-key (kbd "M-x") 'pointage-time)
+
+;; Org mode
+(setq org-directory "~/Documents/")
 
 ;; Sync org notes
 (defun sync-notes ()
