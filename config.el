@@ -1,6 +1,8 @@
 ;;; UI
-(setq doom-theme 'doom-dracula
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+(setq doom-theme 'doom-tomorrow-night
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+
+(add-to-list 'default-frame-alist '(alpha . 80)) ;; Transparency
 
 ;; Line numbers
 ;; Disabling line number increase performances by a lot
@@ -64,3 +66,5 @@
   (interactive)
   (shell-command "~/Documents/Org/git-sync.sh"))
 (global-set-key (kbd "M-x") 'sync-notes)
+
+(add-hook 'org-mode-hook 'org-make-toc-mode)
