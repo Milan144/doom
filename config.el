@@ -1,5 +1,5 @@
 ;;; UI
-(setq doom-theme 'doom-tomorrow-night
+(setq doom-theme 'doom-dracula
       doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
 
 (add-to-list 'default-frame-alist '(alpha . 80)) ;; Transparency
