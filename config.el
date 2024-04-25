@@ -1,6 +1,6 @@
 ;;; UI
-(setq doom-theme 'doom-material
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13))
+(setq doom-theme 'catppuccin
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16))
 
 (add-to-list 'default-frame-alist '(alpha . 80)) ;; Transparency
 
