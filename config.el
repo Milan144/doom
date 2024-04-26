@@ -1,8 +1,8 @@
 ;;; UI
 (setq doom-theme 'catppuccin
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
 
-(add-to-list 'default-frame-alist '(alpha . 80)) ;; Transparency
+(add-to-list 'default-frame-alist '(alpha . 90)) ;; Transparency
 
 ;; Line numbers
 ;; Disabling line number increase performances by a lot
