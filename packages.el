@@ -4,3 +4,4 @@
 ;; CUSTOM PACKAGES
 (package! pdf-tools)
 (package! catppuccin-theme)
+(package! org-bullets)
