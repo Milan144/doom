@@ -5,3 +5,4 @@
 (package! pdf-tools)
 (package! catppuccin-theme)
 (package! org-bullets)
+(package! wakatime-mode)
