@@ -25,11 +25,6 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-;;; :ui doom-dashboard
-(setq fancy-splash-image (file-name-concat doom-user-dir "splash.png"))
-;; Hide the menu for as minimalistic a startup screen as possible.
-(setq +doom-dashboard-functions '(doom-dashboard-widget-banner))
-
 ;; Time management
 ;; Wakatime
 (use-package wakatime-mode
