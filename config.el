@@ -1,12 +1,12 @@
 ;; Theme and font
-(setq doom-theme 'catppuccin
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+(setq doom-theme 'atom-one-dark
+      doom-font (font-spec :family "JetBrainsMono" :size 14))
 
 ;; Transparency
-(add-to-list 'default-frame-alist '(alpha . 90)) 
+(add-to-list 'default-frame-alist '(alpha . 95))
 
 ;; Disabling line numbers
-(setq display-line-numbers-type nil)
+;;(setq display-line-numbers-type nil)
 
 ;; Prevents some cases of Emacs flickering.
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -17,6 +17,11 @@
 
 ;; An evil mode indicator is redundant with cursor shape
 (setq doom-modeline-modal nil)
+
+;;; :ui doom-dashboard
+(setq fancy-splash-image (file-name-concat doom-user-dir "splash.png"))
+;; Hide the menu for as minimalistic a startup screen as possible.
+(setq +doom-dashboard-functions '(doom-dashboard-widget-banner))
 
 ;; Focus new window after splitting
 (setq evil-split-window-below t

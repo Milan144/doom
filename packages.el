@@ -6,3 +6,4 @@
 (package! catppuccin-theme)
 (package! org-bullets)
 (package! wakatime-mode)
+(package! atom-one-dark-theme)
