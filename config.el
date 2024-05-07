@@ -30,6 +30,9 @@
   :init (global-wakatime-mode))
 
 ;; Org mode
+(setq org-modern-label-border nil)
+(global-org-modern-mode)
+
 (use-package org
   :defer t
   :config
@@ -38,11 +41,7 @@
   (setq org-hide-emphasis-markers t)
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  (use-package org-bullets
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
-
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
 ;; Odoo
 (defun pointage ()
   (interactive)
