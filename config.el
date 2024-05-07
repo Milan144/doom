@@ -5,9 +5,6 @@
 ;; Transparency
 (add-to-list 'default-frame-alist '(alpha . 95))
 
-;; Disabling line numbers
-;;(setq display-line-numbers-type nil)
-
 ;; Prevents some cases of Emacs flickering.
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
@@ -77,3 +74,12 @@
   (interactive)
   (shell-command "~/Documents/Org/git-sync.sh"))
 (global-set-key (kbd "M-x") 'sync-notes)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))

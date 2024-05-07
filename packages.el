@@ -7,3 +7,7 @@
 (package! org-bullets)
 (package! wakatime-mode)
 (package! atom-one-dark-theme)
+(package! jsonrpc)
+(package! editorconfig)
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
