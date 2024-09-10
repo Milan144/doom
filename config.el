@@ -13,6 +13,9 @@
 ;; Hide line numbers
 (setq display-line-numbers-type nil)
 
+;; Hide Window decorations
+(set-frame-parameter nil 'undecorated t)
+
 ;; An evil mode indicator is redundant with cursor shape
 (setq doom-modeline-modal nil)
 
@@ -51,25 +54,46 @@
 ;; Set a higher delay for idle updates (default is 0.5)
 (setq idle-update-delay 1.0)
 
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)
-              ("C-n" . 'copilot-next-completion)
-              ("C-p" . 'copilot-previous-completion))
-  :config
-  ;; Set 4 spaces for the following modes
-  (add-to-list 'copilot-indentation-alist '(prog-mode 4))
-  (add-to-list 'copilot-indentation-alist '(org-mode 4))
-  (add-to-list 'copilot-indentation-alist '(text-mode 4))
-  (add-to-list 'copilot-indentation-alist '(closure-mode 4))
-  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 4)))
-
 ;; FLUTTER
 (defun start-android-emulator-async ()
   "Start the Android emulator asynchronously."
   (interactive)
   (async-shell-command "$HOME/Android/Sdk/emulator/emulator -avd Pixel_8_Pro_API_35"))
+
+;; TIME MANAGEMENT (Only work at my work)
+(defun format-pointage-output (output)
+  "Format the raw output of pointage by removing ANSI codes and cleaning up the display."
+  (require 'ansi-color)
+  (let ((formatted-output (ansi-color-apply output)))
+    ;; Optionally, clean up or further format the output here
+    formatted-output))
+
+(defun pointage ()
+  "Run the pointage script and format its output."
+  (interactive)
+  (let ((output (shell-command-to-string "~/pointage")))
+    (message (format-pointage-output output))))
+
+(defun pointage-entree ()
+  "Run the pointage script with 'entree' argument and format its output."
+  (interactive)
+  (let ((output (shell-command-to-string "~/pointage entree")))
+    (message (format-pointage-output output))))
+
+(defun pointage-sortie ()
+  "Run the pointage script with 'sortie' argument and format its output."
+  (interactive)
+  (let ((output (shell-command-to-string "~/pointage sortie")))
+    (message (format-pointage-output output))))
+
+(defun pointage-last ()
+  "Run the pointage script with 'last' argument and format its output."
+  (interactive)
+  (let ((output (shell-command-to-string "~/pointage last")))
+    (message (format-pointage-output output))))
+
+(defun pointage-time ()
+  "Run the pointage script with 'time' argument and format its output."
+  (interactive)
+  (let ((output (shell-command-to-string "~/pointage time")))
+    (message (format-pointage-output output))))
