@@ -27,15 +27,13 @@
 ;; Open dashboard
 (map! :leader
       :desc "Open dashboard"
-        "d b" #'+doom-dashboard/open)
+      "d b" #'+doom-dashboard/open)
 
 ;; Focus new window after splitting
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
 ;; ORG MODE
-(setq org-modern-label-border nil)
-(global-org-modern-mode)
 (use-package org
   :defer t
   :config
@@ -44,7 +42,11 @@
   (setq org-hide-emphasis-markers t)
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+  (use-package org-modern
+    :config
+    (setq org-modern-label-border nil)
+    (global-org-modern-mode)))
 
 ;; OPTIMIZATIONS
 ;; Increase the garbage collection threshold to 100MB
@@ -60,7 +62,7 @@
   (interactive)
   (async-shell-command "$HOME/Android/Sdk/emulator/emulator -avd Pixel_8_Pro_API_35"))
 
-;; TIME MANAGEMENT (Only work at my work)
+;; TIME MANAGEMENT
 (defun format-pointage-output (output)
   "Format the raw output of pointage by removing ANSI codes and cleaning up the display."
   (require 'ansi-color)
@@ -68,32 +70,33 @@
     ;; Optionally, clean up or further format the output here
     formatted-output))
 
-(defun pointage ()
-  "Run the pointage script and format its output."
-  (interactive)
-  (let ((output (shell-command-to-string "~/pointage")))
+(defun run-pointage (arg)
+  "Run the pointage script with a specific argument ARG."
+  (interactive "sEnter argument: ")
+  (let ((output (shell-command-to-string (concat "~/pointage " arg))))
     (message (format-pointage-output output))))
 
-(defun pointage-entree ()
-  "Run the pointage script with 'entree' argument and format its output."
-  (interactive)
-  (let ((output (shell-command-to-string "~/pointage entree")))
-    (message (format-pointage-output output))))
+;; Define specific functions
+(defun pointage () (interactive) (run-pointage ""))
+(defun pointage-entree () (interactive) (run-pointage "entree"))
+(defun pointage-sortie () (interactive) (run-pointage "sortie"))
+(defun pointage-last () (interactive) (run-pointage "last"))
+(defun pointage-time () (interactive) (run-pointage "time"))
 
-(defun pointage-sortie ()
-  "Run the pointage script with 'sortie' argument and format its output."
+;; Theme toggling
+(defun toggle-theme ()
+  "Toggle between light and dark themes."
   (interactive)
-  (let ((output (shell-command-to-string "~/pointage sortie")))
-    (message (format-pointage-output output))))
+  (let ((current-theme (car custom-enabled-themes)))
+    (if (equal current-theme 'doom-rose-pine)
+        (progn
+          (load-theme 'doom-rose-pine-dawn t)
+          (setq doom-theme 'doom-rose-pine-dawn))
+      (progn
+        (load-theme 'doom-rose-pine t)
+        (setq doom-theme 'doom-rose-pine)))))
 
-(defun pointage-last ()
-  "Run the pointage script with 'last' argument and format its output."
-  (interactive)
-  (let ((output (shell-command-to-string "~/pointage last")))
-    (message (format-pointage-output output))))
-
-(defun pointage-time ()
-  "Run the pointage script with 'time' argument and format its output."
-  (interactive)
-  (let ((output (shell-command-to-string "~/pointage time")))
-    (message (format-pointage-output output))))
+;; Keybinding to toggle theme
+(map! :leader
+      :desc "Toggle theme"
+      "t T" #'toggle-theme)
