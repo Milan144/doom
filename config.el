@@ -3,18 +3,12 @@
       user-mail-address "milan.hommet@protonmail.com")
 
 ;; Theme and font
-(setq doom-theme 'doom-rose-pine
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
+(setq doom-theme 'catppuccin
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
 ;; Set a default indentation level
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
-
-;; Hide line numbers
-(setq display-line-numbers-type nil)
-
-;; Hide Window decorations
-(set-frame-parameter nil 'undecorated t)
 
 ;; An evil mode indicator is redundant with cursor shape
 (setq doom-modeline-modal nil)
@@ -56,15 +50,9 @@
 ;; Set a higher delay for idle updates (default is 0.5)
 (setq idle-update-delay 1.0)
 
-;; FLUTTER
-(defun start-android-emulator-async ()
-  "Start the Android emulator asynchronously."
-  (interactive)
-  (async-shell-command "$HOME/Android/Sdk/emulator/emulator -avd Pixel_8_Pro_API_35"))
-
 ;; TIME MANAGEMENT
 (defun format-pointage-output (output)
-  "Format the raw output of pointage by removing ANSI codes and cleaning up the display."
+  "Format the raw output of pointage."
   (require 'ansi-color)
   (let ((formatted-output (ansi-color-apply output)))
     ;; Optionally, clean up or further format the output here
@@ -85,18 +73,40 @@
 
 ;; Theme toggling
 (defun toggle-theme ()
-  "Toggle between light and dark themes."
+  "Toggle between catppuccin flavors."
   (interactive)
-  (let ((current-theme (car custom-enabled-themes)))
-    (if (equal current-theme 'doom-rose-pine)
-        (progn
-          (load-theme 'doom-rose-pine-dawn t)
-          (setq doom-theme 'doom-rose-pine-dawn))
+  (if (equal catppuccin-flavor 'latte)
       (progn
-        (load-theme 'doom-rose-pine t)
-        (setq doom-theme 'doom-rose-pine)))))
+        (setq catppuccin-flavor 'mocha)
+        (catppuccin-reload))
+    (progn
+      (setq catppuccin-flavor 'latte)
+      (catppuccin-reload))))
 
 ;; Keybinding to toggle theme
 (map! :leader
       :desc "Toggle theme"
       "t T" #'toggle-theme)
+
+;; Keybinding to toggle theme
+(map! :leader
+      :desc "Toggle theme"
+      "t T" #'toggle-theme)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)
+              ("C-n" . 'copilot-next-completion)
+              ("C-p" . 'copilot-previous-completion))
+
+  :config
+  (add-to-list 'copilot-indentation-alist '(prog-mode . 4))
+  (add-to-list 'copilot-indentation-alist '(org-mode . 4))
+  (add-to-list 'copilot-indentation-alist '(text-mode . 4))
+  (add-to-list 'copilot-indentation-alist '(closure-mode . 4))
+  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode . 4)))
