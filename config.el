@@ -4,7 +4,12 @@
 
 ;; Theme and font
 (setq doom-theme 'catppuccin
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
+
+(setq catppuccin-flavor 'latte)
+
+;; Add a hook to reload the catppuccin theme after it's loaded
+(add-hook 'catppuccin-mode-hook 'catppuccin-reload)
 
 ;; Set a default indentation level
 (setq-default tab-width 4)
@@ -93,20 +98,3 @@
       :desc "Toggle theme"
       "t T" #'toggle-theme)
 
-;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)
-              ("C-n" . 'copilot-next-completion)
-              ("C-p" . 'copilot-previous-completion))
-
-  :config
-  (add-to-list 'copilot-indentation-alist '(prog-mode . 4))
-  (add-to-list 'copilot-indentation-alist '(org-mode . 4))
-  (add-to-list 'copilot-indentation-alist '(text-mode . 4))
-  (add-to-list 'copilot-indentation-alist '(closure-mode . 4))
-  (add-to-list 'copilot-indentation-alist '(emacs-lisp-mode . 4)))
