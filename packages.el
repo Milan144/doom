@@ -5,4 +5,3 @@
 (package! pdf-tools)
 (package! org-modern)
 (package! catppuccin-theme)
-(package! blamer)

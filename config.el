@@ -55,27 +55,6 @@
 ;; Set a higher delay for idle updates (default is 0.5)
 (setq idle-update-delay 1.0)
 
-;; TIME MANAGEMENT
-(defun format-pointage-output (output)
-  "Format the raw output of pointage."
-  (require 'ansi-color)
-  (let ((formatted-output (ansi-color-apply output)))
-    ;; Optionally, clean up or further format the output here
-    formatted-output))
-
-(defun run-pointage (arg)
-  "Run the pointage script with a specific argument ARG."
-  (interactive "sEnter argument: ")
-  (let ((output (shell-command-to-string (concat "~/pointage " arg))))
-    (message (format-pointage-output output))))
-
-;; Define specific functions
-(defun pointage () (interactive) (run-pointage ""))
-(defun pointage-entree () (interactive) (run-pointage "entree"))
-(defun pointage-sortie () (interactive) (run-pointage "sortie"))
-(defun pointage-last () (interactive) (run-pointage "last"))
-(defun pointage-time () (interactive) (run-pointage "time"))
-
 ;; Theme toggling
 (defun toggle-theme ()
   "Toggle between catppuccin flavors."
