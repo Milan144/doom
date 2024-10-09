@@ -3,10 +3,10 @@
       user-mail-address "milan.hommet@protonmail.com")
 
 ;; Theme and font
-(setq doom-theme 'catppuccin
+(setq doom-theme 'doom-dracula
       doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
 
-(setq catppuccin-flavor 'latte)
+(setq catppuccin-flavor 'mocha)
 
 ;; Add a hook to reload the catppuccin theme after it's loaded
 (add-hook 'catppuccin-mode-hook 'catppuccin-reload)
@@ -54,26 +54,4 @@
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 ;; Set a higher delay for idle updates (default is 0.5)
 (setq idle-update-delay 1.0)
-
-;; Theme toggling
-(defun toggle-theme ()
-  "Toggle between catppuccin flavors."
-  (interactive)
-  (if (equal catppuccin-flavor 'latte)
-      (progn
-        (setq catppuccin-flavor 'mocha)
-        (catppuccin-reload))
-    (progn
-      (setq catppuccin-flavor 'latte)
-      (catppuccin-reload))))
-
-;; Keybinding to toggle theme
-(map! :leader
-      :desc "Toggle theme"
-      "t T" #'toggle-theme)
-
-;; Keybinding to toggle theme
-(map! :leader
-      :desc "Toggle theme"
-      "t T" #'toggle-theme)
 
