@@ -4,9 +4,15 @@
 
 ;; Theme and font
 (setq doom-theme 'doom-dracula
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
 
 (setq catppuccin-flavor 'mocha)
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(65 . 65))
+
+;; Remove window decorations
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; Add a hook to reload the catppuccin theme after it's loaded
 (add-hook 'catppuccin-mode-hook 'catppuccin-reload)
