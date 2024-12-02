@@ -4,7 +4,13 @@
 
 ;; Theme and font
 (setq doom-theme 'doom-rose-pine
-      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
+      doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
+
+;; Transparency
+(set-frame-parameter (selected-frame) 'alpha '(65 . 65))
+
+;; Remove window decorations
+(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; Set a default indentation level
 (setq-default tab-width 4)
