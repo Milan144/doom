@@ -3,14 +3,8 @@
       user-mail-address "milan.hommet@protonmail.com")
 
 ;; Theme and font
-(setq doom-theme 'doom-rose-pine
+(setq doom-theme 'doom-tomorrow-night
       doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
-
-;; Transparency
-(set-frame-parameter (selected-frame) 'alpha '(65 . 65))
-
-;; Remove window decorations
-(add-to-list 'default-frame-alist '(undecorated . t))
 
 ;; Set a default indentation level
 (setq-default tab-width 4)
