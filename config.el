@@ -2,13 +2,11 @@
 (setq user-full-name "Milan Hommet"
       user-mail-address "milan.hommet@protonmail.com")
 
-(setq doom-theme 'doom-dracula
+(setq doom-theme 'doom-one
       doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 17))
 
-(setq catppuccin-flavor 'mocha)
-
-;; Add a hook to reload the catppuccin theme after it's loaded
-(add-hook 'catppuccin-mode-hook 'catppuccin-reload)
+;; Set the theme to atom-one-dark-theme
+(setq doom-theme 'atom-one-dark)
 
 ;; Set a default indentation level
 (setq-default tab-width 4)
